@@ -13,17 +13,20 @@ namespace tp4_web
     {
         public List<Articulos> ListaArticulos { get; set; }
         public Carro aux { get; set; }
-        public string TituloVacio = "Tu carrito está vacío";
-        public string TituloConContenido = "Añadiste al carrito: ";
-        //public List<Carro> ListaCarrito { get; set; }
+        public string TituloVacio { get; set; }
+        public string TituloConContenido { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            TituloVacio = "Tu carrito está vacío";
+            TituloConContenido = "Añadiste al carrito: ";
             ControladorArticulos controlador = new ControladorArticulos();
             ListaArticulos = controlador.listar();
-            //ListaCarro();
             aux = (Carro)Session["Carrito"];
-            Titulo.Text = TituloVacio;
-            if (aux != null)
+            if (aux == null)
+            {
+                Titulo.Text = TituloVacio;
+            }
+            else
             {
                 Titulo.Text = TituloConContenido;
                 if (!IsPostBack)
@@ -31,6 +34,8 @@ namespace tp4_web
                     repRepetidor.DataSource = aux.ListaCarrito;
                     repRepetidor.DataBind();
                 }
+                aux.calcularImporte();
+                Importe.Text = aux.Importe.ToString();
             }
         }
 
@@ -42,6 +47,7 @@ namespace tp4_web
             Session.Add("Carrito", aux);
             repRepetidor.DataSource = aux.ListaCarrito;
             repRepetidor.DataBind();
+            Importe.Text = aux.Importe.ToString();
         }
 
         protected void Restar_Click(object sender, ImageClickEventArgs e)
@@ -52,6 +58,7 @@ namespace tp4_web
             Session.Add("Carrito", aux);
             repRepetidor.DataSource = aux.ListaCarrito;
             repRepetidor.DataBind();
+            Importe.Text = aux.Importe.ToString();
         }
 
         protected void Eliminar_Click(object sender, ImageClickEventArgs e)
@@ -62,6 +69,7 @@ namespace tp4_web
             Session.Add("Carrito", aux);
             repRepetidor.DataSource = aux.ListaCarrito;
             repRepetidor.DataBind();
+            Importe.Text = aux.Importe.ToString();
         }
     }
 }
