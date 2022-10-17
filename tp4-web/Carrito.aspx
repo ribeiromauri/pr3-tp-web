@@ -10,13 +10,16 @@
             <ItemTemplate>
                 <div class="col">
                     <div class="card">
-                        <img src="<%#Eval("URLImagen") %>" class="card-img-top" alt="...">
+                        <img src="<%#Eval("URLImagen") %>" style="width: 150px" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("Precio") %></p>
-                            <asp:ImageButton src="img/plus-lg.svg" ID="Agregar" CommandArgument='<%#Eval("ID")%>' runat="server"/>
-                            <asp:ImageButton src="img/dash.svg" ID="Restar" CommandArgument='<%#Eval("ID")%>' runat="server" />
-                            <asp:ImageButton src="img/x-lg.svg" ID="Eliminar" CommandArgument='<%#Eval("ID")%>' runat="server" />
+                            <p class="card-text">$<%#Eval("Precio") %></p>
+                            <asp:Label ID="lblCantidad" runat="server" Text="Cantidad">
+                                <p><%#Eval("Cantidad") %></p>
+                            </asp:Label>
+                            <asp:ImageButton src="img/plus-lg.svg" ID="Agregar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Agregar_Click"/>
+                            <asp:ImageButton src="img/dash.svg" ID="Restar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Restar_Click"/>
+                            <asp:ImageButton src="img/x-lg.svg" ID="Eliminar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Eliminar_Click"/>
                         </div>
                     </div>
                 </div>
