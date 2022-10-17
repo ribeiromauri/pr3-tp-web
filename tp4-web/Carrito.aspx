@@ -17,9 +17,9 @@
                             <asp:Label ID="lblCantidad" runat="server" Text="Cantidad">
                                 <p><%#Eval("Cantidad") %></p>
                             </asp:Label>
-                            <asp:ImageButton src="img/plus-lg.svg" ID="Agregar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Agregar_Click"/>
-                            <asp:ImageButton src="img/dash.svg" ID="Restar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Restar_Click"/>
-                            <asp:ImageButton src="img/x-lg.svg" ID="Eliminar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Eliminar_Click"/>
+                            <asp:ImageButton src="img/img/plus-lg.svg" ID="Agregar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Agregar_Click"/>
+                            <asp:ImageButton src="img/img/dash.svg" ID="Restar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Restar_Click"/>
+                            <asp:ImageButton src="img/img/x-lg.svg" ID="Eliminar" CommandArgument='<%#Eval("ID")%>' runat="server" OnClick="Eliminar_Click"/>
                         </div>
                     </div>
                 </div>
