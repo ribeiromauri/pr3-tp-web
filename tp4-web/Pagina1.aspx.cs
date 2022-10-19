@@ -55,11 +55,18 @@ namespace tp4_web
                 else
                 {
                     txtBusqueda.Text = "No hay artículos que coincidan con tu búsqueda.";
-                    txtRecargar.Text = "Recargar página.";
+                    txtRecargar.Text = "Recargar página";
                     Session.Remove("ListadoDeArticulos");
                     repRepetidor.DataSource = listaFiltrada;
                     repRepetidor.DataBind();
                 }
+            }
+            if(Filtro.Text == "")
+            {
+                ControladorArticulos controlador = new ControladorArticulos();
+                ListaArticulos = controlador.listar();
+                repRepetidor.DataSource = ListaArticulos;
+                repRepetidor.DataBind();
             }
         }
     }
