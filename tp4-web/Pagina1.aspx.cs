@@ -38,5 +38,29 @@ namespace tp4_web
 
             Session.Add("Carrito", Carrito);
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Articulos> listaFiltrada = new List<Articulos>();
+            if(Filtro.Text != "")
+            {
+                listaFiltrada = ListaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(Filtro.Text.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(Filtro.Text.ToUpper()));
+                if (listaFiltrada.Any())
+                {
+                    Session.Remove("ListadoDeArticulos");
+                    Session.Add("ListadoDeArticulos", listaFiltrada);
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    txtBusqueda.Text = "No hay artículos que coincidan con tu búsqueda.";
+                    txtRecargar.Text = "Recargar página.";
+                    Session.Remove("ListadoDeArticulos");
+                    repRepetidor.DataSource = listaFiltrada;
+                    repRepetidor.DataBind();
+                }
+            }
+        }
     }
 }

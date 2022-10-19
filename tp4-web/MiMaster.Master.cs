@@ -11,6 +11,7 @@ namespace tp4_web
 {
     public partial class MiMaster : System.Web.UI.MasterPage
     {
+        public List<Articulos> ListaFiltrada { get; set; }
         public Carro carritoGlobal { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
