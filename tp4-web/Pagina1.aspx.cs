@@ -63,8 +63,6 @@ namespace tp4_web
             }
             if(Filtro.Text == "")
             {
-                ControladorArticulos controlador = new ControladorArticulos();
-                ListaArticulos = controlador.listar();
                 repRepetidor.DataSource = ListaArticulos;
                 repRepetidor.DataBind();
             }
